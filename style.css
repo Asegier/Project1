@@ -1,0 +1,9 @@
+
+#playButton {
+    align-self: center;
+    background-color: black;
+    font-size: 80px;
+    display: block;
+    position: absolute;
+    top: 100px;
+}
