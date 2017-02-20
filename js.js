@@ -1,14 +1,23 @@
 
 
-var play = document.getElementById("playButton")
-var pause = document.getElementById("music")
-var bgm = document.getElementById("changeSong")
+var play = document.getElementById("playButton");
+var pause = document.getElementById("music");
+var bgm = document.getElementById("changeSong");
+var body = document.getElementsByTagName("body");
+var logo = document.getElementById("logo");
+
+
 
 $(play).on("click", function(){
     
     $(play).hide();
     pause.pause();
-    bgm.play();
+    $(body).fadeIn().css({
+        "background-image": "url(Images/snowT.png)",
+        "background-size": "cover"
+    })
+    $(logo).fadeOut();
+    setTimeout(function(){bgm.play()}, 500);
         })
 
 var keyUP = false;
@@ -17,14 +26,12 @@ var keyLEFT = false;
 var keyRIGHT = false;
 var spaceBar = false;
 
-var motion = {
-  left: false,
-  right: true
-}
+var x = window.innerWidth / 2;
+var y = window.innerHeight / 2;
 
-var bazookaAngle = 0
+// var motion = 
 
-var currentPlayer = "A"
+var currentPlayer = "A";
 
 function turn(){                    // This function changes the players turn
     if (currentPlayer == "A"){      // Checks current player to A
@@ -80,8 +87,8 @@ document.addEventListener("keyup", function(e) {
     case 32:
       spaceBar = false;
       break;
-    case 16:
-      keyShift = false;
+//    case 16:
+//      keyShift = false;
     default:
   }
   
@@ -110,10 +117,38 @@ function terrain(){
 function player(){
     
     if (currentPlayer = "A"){
-        
+          if(keyUP){
+            y1 += .05;
+          }
+
+          if(keyDOWN){
+            y1 -= .05;
+          }
+
+          if(keyLEFT){
+            x1 -= 5;
+          }
+
+          if(keyRIGHT){
+            x1+= 5;
+          }
     }
     else if (currentPlayer = "B"){
-        
+          if(keyUP){
+            y2 += .05;
+          }
+
+          if(keyDOWN){
+            y2 -= .05;
+          }
+
+          if(keyLEFT){
+            x2 -= 5;
+          }
+
+          if(keyRIGHT){
+            x2 += 5;
+          }
     }
 }
 
@@ -126,12 +161,13 @@ document.addEventListener("keydown", function(e){
 
 
             // Takes and stores the Bazooka Angle based on the Spacebar Press
-function bazooka (){
-    
+var bazooka = function (){
+    var bazookaAngle = 45;
 }
 
             // Function to calculate Cannon trajectory
-function cannon() {
+var cannon = function () {
+    
     
     
 }

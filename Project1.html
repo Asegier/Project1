@@ -8,15 +8,19 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
 
 
-
+    <span class="opening">
+        <img id="logo" src="Images/LogoT.png">
+        <button id="playButton">Play</button>
+    
+    </span>
   </head>
   <body>
      <canvas id="gameboard"></canvas>
-          <button id="playButton">Play</button>
-            <audio autoplay id="music">
+           <div id="ball"></div>
+            <audio autoplay loop id="music">
                 <source src="opening.mp3">
             </audio>
-            <audio id="changeSong">
+            <audio loop id="changeSong">
                 <source src="opening2.mp3">
             </audio>
         
