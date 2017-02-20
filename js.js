@@ -162,12 +162,15 @@ document.addEventListener("keydown", function(e){
 
             // Takes and stores the Bazooka Angle based on the Spacebar Press
 var bazooka = function (){
-    var bazookaAngle = 45;
+    
 }
 
             // Function to calculate Cannon trajectory
 var cannon = function () {
+    var bazookaAngle = Math.PI/4;
+    var power = 0
     
+    var xVelocity = power * Math.cos(bazookaAngle)
     
     
 }
