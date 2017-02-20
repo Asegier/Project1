@@ -2,9 +2,13 @@
 
 play = document.getElementById("playButton")
 
-play.on("click", function(){
-        
-        
+
+
+$(play).on("click", function(){
+    
+    $(play).hide();
+    $('#first').pause()
+    
         })
 
 var keyUP = false;
@@ -23,13 +27,13 @@ var bazookaAngle = 0
 var currentPlayer = "A"
 
 function turn(){                    // This function changes the players turn
-    if (currentPlayer == "A"){      // Checks current player for X
-        currentPlayer = "B";        // Changes current player to O
-    // var playerturn = $(".playerTurn").html("It's O's turn");    // Changes text at top
+    if (currentPlayer == "A"){      // Checks current player to A
+        currentPlayer = "B";        // Changes current player to B
+    // var playerturn = $(".playerTurn").html("It's A's turn");    // Changes text at top
     }
-    else if (currentPlayer == "A"){     // Checks if current player is O
-        currentPlayer = "B";            // Changes current player to X
-    // var playerturn = $(".playerTurn").html("It's X's turn");    // Changes text at top
+    else if (currentPlayer == "A"){     // Checks if current player is B
+        currentPlayer = "B";            // Changes current player to A
+    // var playerturn = $(".playerTurn").html("It's B's turn");    // Changes text at top
     }
 }
 
@@ -48,10 +52,13 @@ document.addEventListener("keydown", function(e) {
     case 39:
       keyRIGHT = true;
       break;
-    case //////////////////////////////////////;
-      spaceBar = true;
+    case 32:
+      keySpacebar = true;
       break;
-          
+    case 16:
+      keyShift = true;
+      break;
+    default:
   }
 });
 
@@ -70,9 +77,11 @@ document.addEventListener("keyup", function(e) {
     case 39:
       keyRIGHT = false;
       break;
-    case /////////////////////////////;
+    case 32:
       spaceBar = false;
       break;
+    case 16:
+      keyShift = false;
     default:
   }
   
@@ -90,9 +99,13 @@ function game(){
     
 }
 
-function terrain(){
+        // Creates the terrain for the game
 
+function terrain(){
+    
 }
+
+        // Function to change players
 
 function player(){
     
@@ -105,17 +118,19 @@ function player(){
 }
 
 document.addEventListener("keydown", function(e){
-    switch(e.keyCode){
-            case
+    // switch(e.keyCode){
+     //   case 32:
             
-            bazooka();
-    }
-}
+            // bazooka();
+    })
 
+
+            // Takes and stores the Bazooka Angle based on the Spacebar Press
 function bazooka (){
     
 }
 
+            // Function to calculate Cannon trajectory
 function cannon() {
     
     
