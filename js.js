@@ -1,14 +1,14 @@
 
 
-play = document.getElementById("playButton")
-
-
+var play = document.getElementById("playButton")
+var pause = document.getElementById("music")
+var bgm = document.getElementById("changeSong")
 
 $(play).on("click", function(){
     
     $(play).hide();
-    $('#first').pause()
-    
+    pause.pause();
+    bgm.play();
         })
 
 var keyUP = false;
