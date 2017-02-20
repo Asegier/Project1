@@ -167,11 +167,12 @@ var bazooka = function (){
 
             // Function to calculate Cannon trajectory
 var cannon = function () {
-    var bazookaAngle = Math.PI/4;
+    
+    var angle = angle * Math.PI/180;
     var power = 0
     
-    var xVelocity = power * Math.cos(bazookaAngle)
-    
+    var xVelocity = power * Math.cos(bazookaAngle);
+    var yVelocity = power * Math.sin(bazookaAngle);
     
 }
 

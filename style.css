@@ -31,12 +31,17 @@ body {
     background-repeat: no-repeat;
 }
 
+#A{
+    width:25px;
+    
+}
+
 /*.opening {
     position: relative;
     
 }*/
 
-#ball {
+/* #ball {
     height: 100px;
     width: 100px;
     border-radius: 50px;
@@ -47,4 +52,4 @@ body {
     margin-top: -50px;
     background-color: blue;
   }
-      
+      */
