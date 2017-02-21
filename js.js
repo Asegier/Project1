@@ -14,7 +14,7 @@ $(play).on("click", function(){
     pause.pause();
     $(body).fadeIn().css({
         "background-image": "url(Images/snowT.png)",
-        "background-size": "cover"
+        "background-size": "auto"
     })
     $(logo).fadeOut();
     setTimeout(function(){bgm.play()}, 500);
