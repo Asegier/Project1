@@ -3,19 +3,22 @@
   <head>
     <title>Worms Game!!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <!-- Bootstrap core CSS -->
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
-
-
-    <span class="opening">
-        <img id="logo" src="Images/LogoT.png">
-        <button id="playButton">Play</button>
-    
-    </span>
+      <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
      <canvas id="gameboard"></canvas>
+
+     <div id="player"></div>
+
+     <!--
+
+     <span class="opening">
+        <img id="logo" src="Images/LogoT.png">
+        <button id="playButton">Play</button>
+
+    </span>
+
+
            <div id="ball"></div>
            <img id="A" src="images/worm.png">
            <audio id="buttonSound">
@@ -27,13 +30,19 @@
             <audio loop id="changeSong">
                 <source src="opening2.mp3">
             </audio>
+
+
+     -->
         
         
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="js.js"></script>
+
+
+     <script src="./js/Rocket.js"></script>
+     <script src="./js/Player.js"></script>
+     <script src="./js/Level.js"></script>
+     <script src="./js/Gameboard.js"></script>
   </body>
 </html>
                 

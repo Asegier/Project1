@@ -1,3 +1,15 @@
+#player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 30px;
+    background-image: url("./Images/worm.png");
+    background-size: cover;
+}
+
+/*
+
 @font-face {
     font-family: bitFont;
     src: url(8Bit.ttf);
@@ -31,10 +43,18 @@ body {
     background-repeat: no-repeat;
 }
 
-#A{
-    width:25px;
-    
+#player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: auto;
+    background-image: url("./Images/worm.png");
+    background-size: cover;
 }
+
+*/
+
 
 /*.opening {
     position: relative;
