@@ -85,8 +85,8 @@ var GameBoard = function(){
      */
     function render(){
         player.render(motion);
-        rocket.render(motion);
-        debugger;
+       // rocket.render(motion);
+       // debugger;
     }
 
 

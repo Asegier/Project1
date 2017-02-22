@@ -23,6 +23,9 @@ var Player = function(){
     var isDropping = false;
     var dropStopped = false;
 
+    var isPoweringUP = false;
+    var firePower = 0;
+    var firingRockets = [];
 
     /*
      * Drop the player
@@ -40,8 +43,6 @@ var Player = function(){
 
     };
 
-
-
     /*
      *  init Player
      */
@@ -52,10 +53,12 @@ var Player = function(){
 
 
         // Once all init is done
-
     };
 
-
+    function shoot(){
+        firingRockets.push(new Rocket(position.x,position.y, firePower, rocketDeg));
+        firePower = 0;
+    }
 
 
 
@@ -64,6 +67,7 @@ var Player = function(){
      *
      */
     var deg = 0;
+    var rocketDeg = 0;
     var facingRight = true;
     this.render = function(motion){
         if(dropStopped){
@@ -71,6 +75,9 @@ var Player = function(){
             var bazA = document.getElementById("rocketLauncher");
 
             if(motion.up == true){
+
+                rocketDeg++;
+
                 if (deg <= 91 && deg >= -90){
                     bazA.style.transform="rotate(" + deg + "deg)"
                     if (facingRight == true){
@@ -85,6 +92,8 @@ var Player = function(){
                 }
             }
             if(motion.down == true){
+                rocketDeg--;
+
                 if (deg >= -91 && deg <= 90){
                     bazA.style.transform="rotate(" + deg + "deg)"
                     if(facingRight == false){
@@ -137,6 +146,26 @@ var Player = function(){
             dropPlayer();
             isDropping = true;
         }
+
+        /*
+         * Shoot Rocket
+         */
+        if(motion.space && !isPoweringUP){
+            isPoweringUP = true;
+        }
+
+        if(motion.space && isPoweringUP){
+            firePower += 2
+        }
+
+        if(!motion.space && isPoweringUP){
+            isPoweringUP = false;
+            shoot();
+        }
+
+        firingRockets.forEach(function(el, index){
+            el.render();
+        });
 
     }
 
