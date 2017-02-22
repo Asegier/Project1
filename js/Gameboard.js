@@ -11,6 +11,7 @@ var GameBoard = function(){
      * Game environment
      */
     var player = new Player();
+    // var player2 = new Player();
     var level = new Level("./images/snowT.png");
     this.currentLevel = level;
 
@@ -84,6 +85,8 @@ var GameBoard = function(){
      */
     function render(){
         player.render(motion);
+        rocket.render(motion);
+        debugger;
     }
 
 

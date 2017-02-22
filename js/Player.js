@@ -32,13 +32,13 @@ var Player = function(){
         var dropPositions = gameBoard.currentLevel.dropPositions();
         var x = dropPositions[parseInt( Math.random() * dropPositions.length )];
         position.x = x;
-    }
+    };
 
 
     var stopDropPlayer = function(){
         dropStopped = gameBoard.currentLevel.isSolid(position.x, position.y+playerElement.getClientRects()[0].height);
 
-    }
+    };
 
 
 
@@ -48,13 +48,12 @@ var Player = function(){
     function init(){
 
         // Add default weapons
-       // weapons.push(new Rocket(20));
+       weapons.push(new Rocket(20));
 
 
         // Once all init is done
 
-    }
-
+    };
 
 
 
@@ -64,30 +63,84 @@ var Player = function(){
     /*
      *
      */
+    var deg = 0;
+    var facingRight = true;
     this.render = function(motion){
-
-
-
         if(dropStopped){
-            return;
-        }
+            var charA = document.getElementById("player");
+            var bazA = document.getElementById("rocketLauncher");
 
-        position.y += motion.gravity;
-        playerElement.style.top = position.y + "px";
-        playerElement.style.left = position.x + "px";
+            if(motion.up == true){
+                if (deg <= 91 && deg >= -90){
+                    bazA.style.transform="rotate(" + deg + "deg)"
+                    if (facingRight == true){
+//                        bazA.style.transform="rotate(" + deg + "deg)"
+                        deg--;
+                    } else if(facingRight == false){
+//                        bazA.style.transform="rotate(" + deg + "deg)"
+                        deg++;
+                    }
+                    console.log("motion up!");
+//                    debugger;
+                }
+            }
+            if(motion.down == true){
+                if (deg >= -91 && deg <= 90){
+                    bazA.style.transform="rotate(" + deg + "deg)"
+                    if(facingRight == false){
+                        deg--;
+                    } else if(facingRight == true){
+//                        bazA.style.transform="rotate(" + deg + "deg)"
+                        deg++;
+                    }
+                }
+//                debugger;
+                console.log("motion down!");
+            }
+            if(motion.left == true){
+                position.x -= .5;
+                position.y -= 1;
+                $(charA).css("background-image", "url(./Images/worm2.png)");             
+                $(bazA).css({
+                    'background-image': 'url(/Images/Bazooka2.png)',
+                    'left': '-12px'
+                });
+                facingRight = false;    
+             
+            }
+            if(motion.right == true){
+                position.x += .5;
+                position.y -= 1;
+                $(charA).css("background-image", "url(./Images/worm.png)");
+                $(bazA).css({
+                    'background-image': 'url(/Images/Bazooka.png)',
+                    'left': '0px'
+                });
+                facingRight = true;
+            }
+        }
+        if(!dropStopped){
+            
+            position.y += motion.gravity;
+            playerElement.style.top = position.y + "px";
+            playerElement.style.left = position.x + "px";
+        }
+    
 
         if(isDropping){
+
             stopDropPlayer();
-        }
+        };
 
         if(!isDropping) {
+
             dropPlayer();
             isDropping = true;
         }
 
-
     }
 
+        
 
     init();
 

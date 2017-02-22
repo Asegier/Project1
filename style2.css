@@ -9,16 +9,16 @@
 }
 
 #rocketLauncher {
-
-    width: 200px;
-    height: 200px;
-    
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 38px;
+    height: 14px;
+    background-size: cover;
     background-repeat: no-repeat;
-
     background-image: url("./Images/Bazooka.png");
 
 }
-
 
 @font-face {
     font-family: bitFont;
