@@ -2,7 +2,7 @@ var Level = function(imageURL) {
 
 
     var canvasElement = document.getElementById("gameboard");
-    var ctx = canvasElement.getContext('2d');
+    this.ctx = canvasElement.getContext('2d');
     var isCanvasLoaded = false;
     var self = this;
 
@@ -21,12 +21,12 @@ var Level = function(imageURL) {
             return availableYPositions;
         }
 
-        for(var i = 0; i< ctx.canvas.width; i++){
+        for(var i = 0; i< self.ctx.canvas.width; i++){
 
             var isTransparent = true;
-            for(var j = 0; j < ctx.canvas.height; j++){
+            for(var j = 0; j < self.ctx.canvas.height; j++){
 
-                var pixel = ctx.getImageData(i, j, 1, 1);
+                var pixel = self.ctx.getImageData(i, j, 1, 1);
 
                 if(pixel.data[3] != 0){
                     isTransparent = false;
@@ -51,7 +51,14 @@ var Level = function(imageURL) {
             return false;
         }
 
-        var pixel = ctx.getImageData(x, y, 1, 1);
+        /*
+        var rect = canvasElement.getBoundingClientRect();
+        var canvasX = parseInt(x) - rect.left;
+        var canvasy = parseInt(y) - rect.top;
+        */
+
+
+        var pixel = self.ctx.getImageData(parseInt(x), parseInt(y), 1, 1);
         return pixel.data[3] != 0;
     }
 
@@ -60,13 +67,13 @@ var Level = function(imageURL) {
      */
     function positionCanvas(){
 
-        ctx.canvas.width  = window.innerWidth;
-        ctx.canvas.height = window.innerHeight;
+        self.ctx.canvas.width  = window.innerWidth;
+        self.ctx.canvas.height = window.innerHeight;
 
         var imageObj = new Image();
 
         imageObj.onload = function() {
-            ctx.drawImage(imageObj, 0, window.innerHeight - imageObj.height);
+            self.ctx.drawImage(imageObj, 0, window.innerHeight - imageObj.height);
             isCanvasLoaded = true;
             self.dropPositions();
         };

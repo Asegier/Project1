@@ -9,6 +9,11 @@ var Player = function(){
     var weapons         = [];                      // Weapons array
     var currentWeapon   = 0;                       // Current weapon
 
+    var deg = 0;
+    var rocketDeg = 0;
+    var facingRight = true;
+    var self = this;
+
     /*
      * Game environment
      */
@@ -48,29 +53,44 @@ var Player = function(){
      */
     function init(){
 
-        // Add default weapons
-       weapons.push(new Rocket(20));
-
-
         // Once all init is done
     };
 
-    function shoot(){
-//        debugger;
-        firingRockets.push(new Rocket(position.x,position.y, firePower, rocketDeg));
-        firePower = 0;
 
+    this.changeDegree = function(degrees){
+        rocketDeg += degrees;
+        rocketDeg = rocketDeg%360;
+
+        console.log(rocketDeg);
     }
 
 
+    function shoot(){
+
+
+        var shootingDegree = 0;
+
+        if(!facingRight){
+
+            if(rocketDeg <= 180){
+                shootingDegree = 90 + (90 - rocketDeg);
+            }else{
+                shootingDegree = 270 + (270 - rocketDeg);
+            }
+        }else{
+            shootingDegree =  rocketDeg;
+        }
+
+        console.log(firingRockets.length);
+        firingRockets.push(new Rocket(position.x,position.y, firePower, shootingDegree));
+        firePower = 0;
+    }
 
 
     /*
      *
      */
-    var deg = 0;
-    var rocketDeg = 0;
-    var facingRight = true;
+
     this.render = function(motion){
         if(dropStopped){
             var charA = document.getElementById("player");
@@ -78,7 +98,7 @@ var Player = function(){
 
             if(motion.up == true){
 
-                rocketDeg++;
+                self.changeDegree(1);
 
                 if (deg <= 91 && deg >= -90){
                     bazA.style.transform="rotate(" + deg + "deg)"
@@ -94,7 +114,7 @@ var Player = function(){
                 }
             }
             if(motion.down == true){
-                rocketDeg--;
+                self.changeDegree(-1);
 
                 if (deg >= -91 && deg <= 90){
                     bazA.style.transform="rotate(" + deg + "deg)"
@@ -109,6 +129,7 @@ var Player = function(){
                 console.log("motion down!");
             }
             if(motion.left == true){
+
                 position.x -= .5;
                 position.y -= 1;
                 $(charA).css("background-image", "url(./Images/worm2.png)");             
@@ -116,11 +137,10 @@ var Player = function(){
                     'background-image': 'url(/Images/Bazooka2.png)',
                     'left': '-12px'
                 });
-                facingRight = false;  
-                
-             
+                facingRight = false;
             }
             if(motion.right == true){
+
                 position.x += .5;
                 position.y -= 1;
                 $(charA).css("background-image", "url(./Images/worm.png)");
@@ -129,6 +149,7 @@ var Player = function(){
                     'left': '0px'
                 });
                 facingRight = true;
+
 //                deg = deg - 90
             }
         }
@@ -169,6 +190,10 @@ var Player = function(){
 
         firingRockets.forEach(function(el, index){
             el.render();
+
+            if(el.boom){
+                firingRockets.splice(index,1);
+            }
         });
 
     }

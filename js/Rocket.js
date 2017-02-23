@@ -3,13 +3,46 @@ var Rocket = function(x,y, firePower, deg){
 
     var self = this;
     self.element = null;
-    self.speed = firePower;
+    self.speed = 200;//firePower;
     self.time = 0;
 
     self.y = y;
     self.x = x;
     self.angle = deg; //deg;
     self.gravity = 30;
+
+    self.boom = false;
+
+
+    function collisionDetection() {
+
+        var rocketY = self.element.style.top;
+        var rocketX = self.element.style.left;
+
+        if( rocketX < 0 || rocketX > window.innerWidth || rocketY < 0 || rocketY > window.innerHeight ){
+            return;
+        }
+
+        if( gameBoard.currentLevel.isSolid(rocketX,rocketY) ){
+            self.element.remove();
+            self.boom = true;
+
+
+            var canvasElement = document.getElementById("gameboard");
+            var ctx = canvasElement.getContext('2d');
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(parseInt(rocketX), parseInt(rocketY), 30, 0, 2 * Math.PI, false);
+            ctx.clip();
+            ctx.fillStyle = "rgba(0, 0, 0, 0)";
+            ctx.fill();
+            ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+            ctx.restore();
+         }
+
+
+    }
 
     function move(){
 
@@ -22,7 +55,6 @@ var Rocket = function(x,y, firePower, deg){
             // set the position of the ball
             self.element.style.top = y + "px";
             self.element.style.left = x + "px";
-            
 
         }
         // incriment time
@@ -33,6 +65,8 @@ var Rocket = function(x,y, firePower, deg){
 
     this.render = function(){
         move();
+        collisionDetection();
+
     }
 
 
