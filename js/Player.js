@@ -25,7 +25,7 @@ var Player = function(){
 
     var isPoweringUP = false;
     var firePower = 0;
-    var firingRockets = [];
+    firingRockets = [];
 
     /*
      * Drop the player
@@ -56,8 +56,10 @@ var Player = function(){
     };
 
     function shoot(){
+//        debugger;
         firingRockets.push(new Rocket(position.x,position.y, firePower, rocketDeg));
         firePower = 0;
+
     }
 
 
@@ -114,7 +116,8 @@ var Player = function(){
                     'background-image': 'url(/Images/Bazooka2.png)',
                     'left': '-12px'
                 });
-                facingRight = false;    
+                facingRight = false;  
+                
              
             }
             if(motion.right == true){
@@ -126,6 +129,7 @@ var Player = function(){
                     'left': '0px'
                 });
                 facingRight = true;
+//                deg = deg - 90
             }
         }
         if(!dropStopped){

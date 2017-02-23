@@ -11,7 +11,8 @@ var GameBoard = function(){
      * Game environment
      */
     var player = new Player();
-    // var player2 = new Player();
+    var player2 = new Player();
+    
     var level = new Level("./images/snowT.png");
     this.currentLevel = level;
 

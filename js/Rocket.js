@@ -2,7 +2,7 @@ var Rocket = function(x,y, firePower, deg){
 
 
     var self = this;
-    self.element =null;
+    self.element = null;
     self.speed = firePower;
     self.time = 0;
 
@@ -18,11 +18,13 @@ var Rocket = function(x,y, firePower, deg){
         var y = self.speed * Math.sin(self.angle * Math.PI/180) * self.time -0.5 * self.gravity * Math.pow(self.time,2);
         y = self.y - y;
 
+        if (x < window.innerWidth && y < window.innerHeight && x > 0){
+            // set the position of the ball
+            self.element.style.top = y + "px";
+            self.element.style.left = x + "px";
+            
 
-        // set the position of the ball
-        self.element.style.top = y + "px";
-        self.element.style.left = x + "px";
-
+        }
         // incriment time
         self.time += 0.05;
     }
