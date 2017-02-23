@@ -71,9 +71,10 @@ var Player = function(){
         var shootingDegree = 0;
 
         if(!facingRight){
-
+            
             if(rocketDeg <= 180){
                 shootingDegree = 90 + (90 - rocketDeg);
+                
             }else{
                 shootingDegree = 270 + (270 - rocketDeg);
             }
@@ -95,6 +96,7 @@ var Player = function(){
         if(dropStopped){
             var charA = document.getElementById("player");
             var bazA = document.getElementById("rocketLauncher");
+            var rockA = document.getElementsByClassName("rocket")
 
             if(motion.up == true){
 
@@ -138,6 +140,7 @@ var Player = function(){
                     'left': '-12px'
                 });
                 facingRight = false;
+                $(rockA).css("background-image", "url(./Images/rocketLeft.png)")
             }
             if(motion.right == true){
 
@@ -149,6 +152,7 @@ var Player = function(){
                     'left': '0px'
                 });
                 facingRight = true;
+                $(rockA).css("background-image", "url(./Images/rocketRight.png)")
 
 //                deg = deg - 90
             }

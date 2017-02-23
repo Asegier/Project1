@@ -3,14 +3,13 @@ var Rocket = function(x,y, firePower, deg){
 
     var self = this;
     self.element = null;
-    self.speed = 200;//firePower;
+    self.speed = firePower;
     self.time = 0;
 
     self.y = y;
     self.x = x;
     self.angle = deg; //deg;
     self.gravity = 30;
-
     self.boom = false;
 
 
