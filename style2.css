@@ -32,7 +32,7 @@
 
 @font-face {
     font-family: bitFont;
-    src: url(8Bit.ttf);
+    src: url(fonts/8Bit.ttf);
 }
 
 #playButton {

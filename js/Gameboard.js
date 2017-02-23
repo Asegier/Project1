@@ -13,7 +13,7 @@ var GameBoard = function(){
     var player = new Player();
     var player2 = new Player();
     
-    var level = new Level("./images/snowT.png");
+    var level = new Level("../Images/snowT.png");
     this.currentLevel = level;
 
     var motion = {              // Motion object
