@@ -82,7 +82,7 @@ body {
 
 .overlay{
     opacity:1;
-    background-image: url(images/wallpaperopening.png);
+    background-image: url(./images/wallpaperopening.png);
     background-size: cover;
     position:fixed;
     width:100%;
