@@ -1,34 +1,32 @@
-var Rocket = function(x,y, firePower, deg){
+const Rocket = function Rocket (x,y, firePower, deg) {
 
-
-    var self = this;
-    self.element = null;
+    const self = this;
     self.speed = firePower;
-    self.time = 0;
-
+    self.angle = deg;
     self.y = y;
     self.x = x;
-    self.angle = deg; //deg;
-    self.gravity = 30;
+    this.render = render;
+    self.element = null;
+    self.time = 0;
     self.boom = false;
 
+    init();
 
-    function collisionDetection() {
+    function collisionDetection () {
 
-        var rocketY = self.element.style.top;
-        var rocketX = self.element.style.left;
+        const rocketY = self.element.style.top;
+        const rocketX = self.element.style.left;
 
         if( rocketX < 0 || rocketX > window.innerWidth || rocketY < 0 || rocketY > window.innerHeight ){
             return;
         }
 
-        if( gameBoard.currentLevel.isSolid(rocketX,rocketY) ){
+        if( gameBoard.currentLevel.isSolid(rocketX, rocketY) ){
             self.element.remove();
             self.boom = true;
 
-
-            var canvasElement = document.getElementById("gameboard");
-            var ctx = canvasElement.getContext('2d');
+            const canvasElement = window.utils.el("gameboard");
+            const ctx = canvasElement.getContext('2d');
 
             ctx.save();
             ctx.beginPath();
@@ -39,15 +37,12 @@ var Rocket = function(x,y, firePower, deg){
             ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
             ctx.restore();
          }
-
-
     }
 
-    function move(){
-
+    function move () {
         // work out the new position of the ball
         var x = self.speed * Math.cos(self.angle * Math.PI/180) * self.time + self.x;
-        var y = self.speed * Math.sin(self.angle * Math.PI/180) * self.time -0.5 * self.gravity * Math.pow(self.time,2);
+        var y = self.speed * Math.sin(self.angle * Math.PI/180) * self.time -0.5 * window.constants.ROCKET_GRAVITY * Math.pow(self.time,2);
         y = self.y - y;
 
         if (x < window.innerWidth && y < window.innerHeight && x > 0){
@@ -60,21 +55,15 @@ var Rocket = function(x,y, firePower, deg){
         self.time += 0.05;
     }
 
-
-
-    this.render = function(){
+    function render () {
         move();
         collisionDetection();
 
     }
 
-
     function init() {
-
-        // Create HTML Element
         self.element = document.createElement("div");
         self.element.classList.add("rocket");
-        document.getElementById("game").appendChild(self.element);
+        window.utils.el("game").appendChild(self.element);
     }
-    init();
 }

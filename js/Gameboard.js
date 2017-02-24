@@ -1,117 +1,43 @@
-var GameBoard = function(){
+const gameBoard = (function () {
 
-    /*
-     * Game variables
-     */
+    document.addEventListener("keydown", onKeydown);
+    document.addEventListener("keyup", onKeyup);
 
-    var gravity = 10;
+    setTimeout(animloop, 500);
 
+    const player = new Player("player", "rocketLauncher");
+    const player2 = new Player("player2", "rocketLauncher2");
+    let motion
 
-    /*
-     * Game environment
-     */
-    var player = new Player();
-    var player2 = new Player();
+    window.turn = "player"
     
-    var level = new Level("../Images/snowT.png");
-    this.currentLevel = level;
+    return {
+        currentLevel: new Level("./images/snowT.png")
+    };
 
-    var motion = {              // Motion object
-        'up'    : false,
-        'down'  : false,
-        'left'  : false,
-        'right' : false,
-        'space' : false,
-        'shift' : false,
-        'gravity': gravity
-    }
-
-    /*
-     *  Keyboard events
-     */
-    document.addEventListener("keydown", function(e) {
-        switch(e.keyCode){
-            case 38:
-                motion.up = true;
-                break;
-            case 40:
-                motion.down = true;
-                break;
-            case 37:
-                motion.left = true;
-                break;
-            case 39:
-                motion.right = true;
-                break;
-            case 32:
-                motion.space = true;
-                break;
-            case 16:
-                motion.shift = true;
-                break;
-            default:
-        }
-    });
-
-    document.addEventListener("keyup", function(e) {
-
-        switch(e.keyCode){
-            case 38:
-                motion.up = false;
-                break;
-            case 40:
-                motion.down = false;
-                break;
-            case 37:
-                motion.left = false;
-                break;
-            case 39:
-                motion.right = false;
-                break;
-            case 32:
-                motion.space = false;
-                break;
-            case 16:
-                motion.shift = false;
-                break;
-            default:
-        }
-    });
-
-
-
-
-    /*
-     *  Render game
-     */
     function render(){
-        player.render(motion);
-       // rocket.render(motion);
-       // debugger;
+        player.render(motion, turn);
+        player2.render(motion, turn);
     }
 
-
-    /*
-     *  Game loop
-     */
     function animloop(){
-        window.requestAnimFrame(animloop);
+        window.utils.requestAnimFrame(animloop);
         render();
     };
 
-    setTimeout(function(){ animloop() }, 500);
+    function onKeydown ({ keyCode }) {
+        switch(keyCode){
+            case 38: motion = 'up'; break;
+            case 40: motion = 'down'; break;
+            case 37: motion = 'left'; break;
+            case 39: motion = 'right'; break;
+            case 32: motion = 'space'; break;
+            case 16: motion = 'shift'; break;
+        }
+    }
 
-}
+    function onKeyup (e) {
+        motion = null
+    }
 
-
-window.requestAnimFrame = (function(){
-    return  window.requestAnimationFrame       ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame    ||
-        function( callback ){
-            window.setTimeout(callback, 1000 / 60);
-        };
-})();
-
-
-var gameBoard = new GameBoard();
+})()

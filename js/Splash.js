@@ -1,9 +1,9 @@
-var play = document.getElementById("playButton");
-var pause = document.getElementById("music");
-var bgm = document.getElementById("changeSong");
+var play = window.utils.el("playButton");
+var pause = window.utils.el("music");
+var bgm = window.utils.el("changeSong");
 var body = document.getElementsByTagName("body");
-var logo = document.getElementById("logo");
-var buttonSound = document.getElementById("buttonSound");
+var logo = window.utils.el("logo");
+var buttonSound = window.utils.el("buttonSound");
 
 
 $(play).on("click", function(){
@@ -11,7 +11,7 @@ $(play).on("click", function(){
     $(play).hide();
     pause.pause();
     $(body).fadeIn().css({
-        "background-image": "url(./Images/snowT.png)",
+        "background-image": "url(./images/snowT.png)",
         "background-size": "auto"
     })
     buttonSound.play()

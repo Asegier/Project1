@@ -1,7 +1,7 @@
 var Level = function(imageURL) {
 
 
-    var canvasElement = document.getElementById("gameboard");
+    var canvasElement = window.utils.el("gameboard");
     this.ctx = canvasElement.getContext('2d');
     var isCanvasLoaded = false;
     var self = this;
