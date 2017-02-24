@@ -67,7 +67,7 @@ var Player = function (playerId, rocketLauncherId) {
         }
         
         if (!facingRight) {
-            $(rockets1Nodes).css("background-image", "url(./images/rocketLeft.png)")
+            $(rockets1Nodes).css("background-image", "url(./Images/rocketLeft.png)")
             if (rocketDeg <= 180) {
                 shootingDegree = 90 + (90 - rocketDeg);
             }else{
@@ -75,7 +75,7 @@ var Player = function (playerId, rocketLauncherId) {
             }
         }else{
             shootingDegree =  rocketDeg;
-            $(rockets1Nodes).css("background-image", "url(./images/rocketRight.png)")
+            $(rockets1Nodes).css("background-image", "url(./Images/rocketRight.png)")
         }
 
         firingRockets.push(new Rocket(position.x,position.y, firePower, shootingDegree, facingRight));
@@ -132,9 +132,9 @@ var Player = function (playerId, rocketLauncherId) {
 
                 position.x -= .5;
                 position.y -= 1;
-                $(playerNode).css("background-image", "url(./images/worm2.png)");             
+                $(playerNode).css("background-image", "url(./Images/worm2.png)");
                 $(bazookaNode).css({
-                    'background-image': 'url(./images/Bazooka2.png)',
+                    'background-image': 'url(./Images/Bazooka2.png)',
                     'left': '-12px'
                 });
                 facingRight = false;
@@ -144,9 +144,9 @@ var Player = function (playerId, rocketLauncherId) {
             if (motion === 'right') {
                 position.x += .5;
                 position.y -= 1;
-                $(playerNode).css("background-image", "url(./images/worm.png)");
+                $(playerNode).css("background-image", "url(./Images/worm.png)");
                 $(bazookaNode).css({
-                    'background-image': 'url(./images/Bazooka.png)',
+                    'background-image': 'url(./Images/Bazooka.png)',
                     'left': '0px'
                 });
                 facingRight = true;

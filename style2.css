@@ -13,7 +13,7 @@ body {
 }
 
 body {
-    background-image: url(images/wallpaperopening.png);
+    background-image: url(Images/wallpaperopening.png);
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -25,7 +25,7 @@ body {
     left: 0;
     width: 25px;
     height: 30px;
-    background-image: url("./images/worm.png");
+    background-image: url("./Images/worm.png");
     background-size: cover;
 }
 
@@ -37,7 +37,7 @@ body {
     height: 14px;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url("./images/Bazooka.png");
+    background-image: url("./Images/Bazooka.png");
 
 }
 
@@ -67,22 +67,22 @@ body {
     position: absolute;
     height: 20px;
     width: 30px;
-    background-image: url(./images/rocketRight.png);
+    background-image: url(./Images/rocketRight.png);
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .rocket.rocket-right {
-    background-image: url(./images/rocketRight.png);
+    background-image: url(./Images/rocketRight.png);
 }
 
 .rocket.rocket-left {
-    background-image: url(./images/rocketLeft.png);
+    background-image: url(./Images/rocketLeft.png);
 }
 
 .overlay{
     opacity:1;
-    background-image: url(./images/wallpaperopening.png);
+    background-image: url(./Images/wallpaperopening.png);
     background-size: cover;
     position:fixed;
     width:100%;

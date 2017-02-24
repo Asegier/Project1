@@ -36,7 +36,7 @@ const gameBoard = (function () {
     window.turn = "player"
     
     return {
-        currentLevel: new Level("./images/snowT.png")
+        currentLevel: new Level("./Images/snowT.png")
     };
 
     function render(){
