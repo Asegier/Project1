@@ -3,6 +3,7 @@ var Player = function (playerId, rocketLauncherId) {
     self.rocketLauncherId = rocketLauncherId
     self.changeDegree = changeDegree;
     self.render = render;
+//    $(document).on('rocketCollision', onRocketCollision)
 
     /*
      * Game variables
@@ -185,5 +186,16 @@ var Player = function (playerId, rocketLauncherId) {
         });
 
     }
+//   function onRocketCollision (evt, rocketX, rocketY) {
+//        const { x, y } = position
+//        const myDistanceFromCollision = window.utils.cD(x, rocketX, y, rocketY)
+//        // if I'm outside the hit parameter, bail
+//        if (myDistanceFromCollision > window.constants.BAZOOKA_COLLISION_RADIUS) {
+//            return
+//        }
+//        console.log(playerId, 'life before hit:', life)
+//        life -= window.utils.calcBazookaDamage(myDistanceFromCollision)
+//        console.log(playerId, 'life after hit:', life)
+//    }
 
 }

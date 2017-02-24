@@ -45,23 +45,21 @@ body {
     font-family: bitFont;
     background-color: transparent;
     color: antiquewhite;
-    font-size: 500px;
+    font-size: 50px;
     display: fixed;
     position: absolute;
-/*
     top: 50%;
     left: 40%;
-*/
     border: 1px;
     border-radius: 25px;
     z-index: 1500;
 }
 
 #logo {
-    width: 60%;
-    height: 60%;
+    width: 55%;
+    height: 40%;
     position: relative;
-    left: 20%;
+    left: 21%;
     z-index: 1002;
 }
 
