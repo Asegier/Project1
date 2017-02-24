@@ -1,62 +1,10 @@
-#player {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 25px;
-    height: 30px;
-    background-image: url("./Images/worm.png");
-    background-size: cover;
-}
-
-#player2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 25px;
-    height: 30px;
-    background-image: url("./Images/worm.png");
-    background-size: cover;
-}
-
-#rocketLauncher {
-    position: absolute;
-    top: 10px;
-    left: 0;
-    width: 38px;
-    height: 14px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url("./Images/Bazooka.png");
-
-}
-
 @font-face {
     font-family: bitFont;
     src: url(fonts/8Bit.ttf);
 }
 
-#playButton {
-    font-family: bitFont;
-    background-color: transparent;
-    color: antiquewhite;
-    font-size: 50px;
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 40%;
-    border: 0px;
-    border-radius: 25px;
-}
-
-#logo {
-    width: 60%;
-    height: 60%;
-    position: relative;
-    left: 20%;
-}
-
-html, body {
-    
+html,
+body {
     height: 100%;
     width: 100%;
     padding: 0;
@@ -65,50 +13,84 @@ html, body {
 }
 
 body {
-    background-image: url(Images/wallpaperopening.png);
+    background-image: url(images/wallpaperopening.png);
     background-size: cover;
     background-repeat: no-repeat;
 
 }
 
+.player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 30px;
+    background-image: url("./images/worm.png");
+    background-size: cover;
+}
+
+.rocketLauncher {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 38px;
+    height: 14px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("./images/Bazooka.png");
+
+}
+
+#splashButton {
+    font-family: bitFont;
+    background-color: transparent;
+    color: antiquewhite;
+    font-size: 500px;
+    display: fixed;
+    position: absolute;
+/*
+    top: 50%;
+    left: 40%;
+*/
+    border: 1px;
+    border-radius: 25px;
+    z-index: 1500;
+}
+
+#logo {
+    width: 60%;
+    height: 60%;
+    position: relative;
+    left: 20%;
+    z-index: 1002;
+}
 
 .rocket {
     position: absolute;
     height: 20px;
     width: 30px;
-/*    background-color: red;*/
-    background-image: url(Images/rocketRight.png);
+    background-image: url(./images/rocketRight.png);
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-/*#player {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 25px;
-    height: auto;
-    background-image: url("./Images/worm.png");
+.rocket.rocket-right {
+    background-image: url(./images/rocketRight.png);
+}
+
+.rocket.rocket-left {
+    background-image: url(./images/rocketLeft.png);
+}
+
+.overlay{
+    opacity:1;
+    background-image: url(images/wallpaperopening.png);
     background-size: cover;
-}*/
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+}
 
-
-
-
-/*.opening {
-    position: relative;
-    
-}*/
-
-/* #ball {
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -50px;
-    margin-top: -50px;
-    background-color: blue;
-  }
-      */

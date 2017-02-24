@@ -1,3 +1,7 @@
+var opening2 = window.utils.el("soundOpening2");
+
+opening2.play();
+
 const gameBoard = (function () {
 
     document.addEventListener("keydown", onKeydown);

@@ -1,6 +1,7 @@
-const Rocket = function Rocket (x,y, firePower, deg) {
+const Rocket = function Rocket (x,y, firePower, deg, facingRight) {
 
     const self = this;
+    self.directionClass = facingRight ? 'rocket-right' : 'rocket-left'
     self.speed = firePower;
     self.angle = deg;
     self.y = y;
@@ -11,7 +12,10 @@ const Rocket = function Rocket (x,y, firePower, deg) {
     self.boom = false;
 
     init();
-
+    
+//    var rockNode = document.getElementsByClassName("rocket");
+//    rockNode.style.backgroundImage = facingRight ? 'url(./images/rocketRight.png)' : 'url(./images/rocketLeft.png)';
+    
     function collisionDetection () {
 
         const rocketY = self.element.style.top;
@@ -64,6 +68,7 @@ const Rocket = function Rocket (x,y, firePower, deg) {
     function init() {
         self.element = document.createElement("div");
         self.element.classList.add("rocket");
+        self.element.classList.add(self.directionClass);
         window.utils.el("game").appendChild(self.element);
     }
 }

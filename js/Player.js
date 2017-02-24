@@ -15,10 +15,13 @@ var Player = function (playerId, rocketLauncherId) {
     var deg = 0;
     var rocketDeg = 0;
     var facingRight = true;
+    var isRocket = false;
 
     /*
      * Game environment
      */
+    var soundLaunch = window.utils.el("soundLaunch");
+    var soundExplosion = window.utils.el("soundExplosion");
 
     var position = {
         x: 0,
@@ -57,20 +60,24 @@ var Player = function (playerId, rocketLauncherId) {
 
     function shoot () {
         var shootingDegree = 0;
-
+        var rockets1Nodes = document.getElementsByClassName("rocket");
+        if (isRocket){
+            return;
+        }
+        
         if (!facingRight) {
-            
+            $(rockets1Nodes).css("background-image", "url(./images/rocketLeft.png)")
             if (rocketDeg <= 180) {
                 shootingDegree = 90 + (90 - rocketDeg);
-                
             }else{
                 shootingDegree = 270 + (270 - rocketDeg);
             }
         }else{
             shootingDegree =  rocketDeg;
+            $(rockets1Nodes).css("background-image", "url(./images/rocketRight.png)")
         }
 
-        firingRockets.push(new Rocket(position.x,position.y, firePower, shootingDegree));
+        firingRockets.push(new Rocket(position.x,position.y, firePower, shootingDegree, facingRight));
         firePower = 0;
     }
 
@@ -93,7 +100,7 @@ var Player = function (playerId, rocketLauncherId) {
         }
         if (dropStopped) {
             const bazookaNode = window.utils.el(self.rocketLauncherId);
-            const rockets1Nodes = document.getElementsByClassName("rocket")
+            const rockets1Nodes = document.getElementsByClassName("rocket");
 
             if (motion === 'up') {
 
@@ -130,7 +137,7 @@ var Player = function (playerId, rocketLauncherId) {
                     'left': '-12px'
                 });
                 facingRight = false;
-                $(rockets1Nodes).css("background-image", "url(./images/rocketLeft.png)")
+//                $(rockets1Nodes).css("background-image", "url(./images/rocketLeft.png)")
                 
             }
             if (motion === 'right') {
@@ -142,7 +149,7 @@ var Player = function (playerId, rocketLauncherId) {
                     'left': '0px'
                 });
                 facingRight = true;
-                $(rockets1Nodes).css("background-image", "url(./images/rocketRight.png)")
+//                $(rockets1Nodes).css("background-image", "url(./images/rocketRight.png)")
             }
         }
 
@@ -160,6 +167,8 @@ var Player = function (playerId, rocketLauncherId) {
         if (motion !== 'space' && isPoweringUP) {
             isPoweringUP = false;
             shoot();
+            isRocket = true;
+            soundLaunch.play();
         }
 
         firingRockets.forEach(function(el, index) {
@@ -167,6 +176,10 @@ var Player = function (playerId, rocketLauncherId) {
 
             if (el.boom) {
                 firingRockets.splice(index,1);
+                soundLaunch.pause();
+                soundLaunch.currentTime = 0;
+                soundExplosion.play();
+                isRocket = false;
                 window.turn = window.turn === 'player' ? 'player2' : 'player';
             }
         });
